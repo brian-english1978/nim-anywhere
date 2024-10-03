@@ -208,8 +208,8 @@ execution:
       url: http://localhost:3030
   resources:
     gpu:
-      requested: 1
-    sharedMemoryMB: 1024
+      requested: 2
+    sharedMemoryMB: 16000
   secrets:
   - variable: NGC_API_KEY
     description: NGC Personal Key from https://org.ngc.nvidia.com/setup/personal-keys
@@ -225,4 +225,8 @@ execution:
   - type: host
     target: /home/workbench/.cache/nvidia-nims/
     description: A path where NIM containers can store and share their cache.
+    options: ""
+  - type: host
+    target: /var/run/docker.sock/
+    description: Tao-Dockermount
     options: ""
