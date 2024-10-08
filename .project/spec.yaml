@@ -230,3 +230,7 @@ execution:
     target: /var/run/docker.sock/
     description: Tao-Dockermount
     options: ""
+  - type: host
+    target: /nvidia-workbench/
+    description: Project files and specs
+    options: ""
