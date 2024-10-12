@@ -26,7 +26,7 @@ NAME="${SVC_NAME}"
 # workspace configuration options
 MODEL=$(config_lkp "${SLUG}_MODEL" "nv-mistralai/mistral-nemo-12b-instruct")
 TAG=$(config_lkp "${SLUG}_NIM_VERSION" "1")
-GPUS=$(config_lkp "${SLUG}_NIM_GPUS" "all")
+GPUS=$(config_lkp "${SLUG}_NIM_GPUS" "device=1")
 IMAGE="nvcr.io/nim/$MODEL"
 
 # This function is responsible for running creating a running the container
@@ -34,9 +34,9 @@ IMAGE="nvcr.io/nim/$MODEL"
 _docker_run() {
     docker run \
         --name=$NAME \
-        --gpus "$GPUS" \
+        --gpus "device=1" \
         --ipc host \
-        -e NGC_API_KEY \
+        -e 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 \
         -v $(hostpath $NGC_HOME):/opt/nim/.cache \
         -u $(id -u) \
         --health-cmd="python -c \"import requests; resp = requests.get('http://localhost:8000/v1/health/ready'); resp.raise_for_status()\"" \
