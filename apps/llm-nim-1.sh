@@ -17,14 +17,14 @@
 source  $(dirname $0)/functions
 
 # NIM options
-SVC_NAME="llm-nim-1"
+SVC_NAME="nemo-12b-instruct"
 
 # NIM constants
 SLUG=$(echo ${SVC_NAME^^} | tr - _)
 NAME="${SVC_NAME}"
 
 # workspace configuration options
-MODEL=$(config_lkp "${SLUG}_MODEL" "meta/llama3-8b-instruct")
+MODEL=$(config_lkp "${SLUG}_MODEL" "nv-mistralai/mistral-nemo-12b-instruct")
 TAG=$(config_lkp "${SLUG}_NIM_VERSION" "1")
 GPUS=$(config_lkp "${SLUG}_NIM_GPUS" "all")
 IMAGE="nvcr.io/nim/$MODEL"
