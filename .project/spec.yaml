@@ -234,3 +234,7 @@ execution:
     target: /nvidia-workbench/
     description: Project files and specs
     options: ""
+  - type: host
+    target: /home/workbench/
+    description: The Narrow Path
+    options: ""
