@@ -3,7 +3,7 @@ specMinorVersion: 2
 meta:
   name: nim-anywhere
   image: project-nim-anywhere
-  description: Accelerate Your AI Deployment With NVIDIA NIM.
+  description: English Optics
   labels:
   - RAG
   - NIM
@@ -208,7 +208,7 @@ execution:
       url: http://localhost:3030
   resources:
     gpu:
-      requested: 2
+      requested: 1
     sharedMemoryMB: 16000
   secrets:
   - variable: NGC_API_KEY
