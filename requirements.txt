@@ -1,6 +1,6 @@
 confz==2.0.1
 fastapi==0.115.2
-fiftyone
+#fiftyone
 gradio==5.0.2
 grandalf==0.8
 jupyterlab>3.0
