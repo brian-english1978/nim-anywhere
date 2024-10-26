@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-source  $(dirname $0)/functions
+source $(dirname $0)/functions
 
 # NIM options
 SVC_NAME="llm-nim-1"
@@ -29,7 +29,7 @@ TAG=$(config_lkp "${SLUG}_NIM_VERSION" "1")
 GPUS=$(config_lkp "${SLUG}_NIM_GPUS" "all")
 IMAGE="nvcr.io/nim/$MODEL"
 
-# This function is responsible for running creating a running the container
+# This function is responsible for running and creating the container
 # and its dependencies.
 _docker_run() {
     docker run \
@@ -49,19 +49,38 @@ _docker_run() {
 
 # stop and remove the running container
 _docker_stop() {
-	docker stop -t "$STOP_TIMEOUT" "$NAME" > /dev/null
-	docker rm -f "$NAME" > /dev/null
+    docker stop -t "$STOP_TIMEOUT" "$NAME" > /dev/null
+    docker rm -f "$NAME" > /dev/null
 }
 
 # print the project's metadata
 _meta() {
-	cat <<-EOM
-		name: "LLM NIM: $SVC_NAME"
-		type: custom
-		class: process
-		icon_url: www.nvidia.com/favicon.ico
-		EOM
+    cat <<-EOM
+        name: "LLM NIM: $SVC_NAME"
+        type: custom
+        class: process
+        icon_url: www.nvidia.com/favicon.ico
+    EOM
 }
 
+# Main function to handle script arguments
+main() {
+    case "$1" in
+        run)
+            _docker_run
+            ;;
+        stop)
+            _docker_stop
+            ;;
+        meta)
+            _meta
+            ;;
+        *)
+            echo "Usage: $0 {run|stop|meta}"
+            exit 1
+            ;;
+    esac
+}
 
-main "$1" "$NAME"
+# Execute the main function with provided arguments
+main "$1"

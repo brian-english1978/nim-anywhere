@@ -201,7 +201,7 @@ execution:
     timeout_seconds: 60
     icon_url: avatars.githubusercontent.com/u/126733545
     webapp_options:
-      autolaunch: false
+      autolaunch: true
       port: "3030"
       proxy:
         trim_prefix: true
