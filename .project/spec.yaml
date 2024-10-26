@@ -135,16 +135,6 @@ execution:
     logfile_path: ""
     timeout_seconds: 60
     icon_url: milvus.io/favicon-32x32.png
-  - name: Redis
-    type: custom
-    class: process
-    start_command: /project/apps/redis.sh start
-    health_check_command: /project/apps/redis.sh status
-    stop_command: /project/apps/redis.sh stop
-    user_msg: ""
-    logfile_path: ""
-    timeout_seconds: 60
-    icon_url: redis.io/favicon.ico
   - name: 'LLM NIM: llm-nim-0'
     type: custom
     class: process
@@ -206,6 +196,16 @@ execution:
       proxy:
         trim_prefix: true
       url: http://localhost:3030
+  - name: Redis
+    type: custom
+    class: process
+    start_command: /project/apps/redis.sh start
+    health_check_command: /project/apps/redis.sh status
+    stop_command: /project/apps/redis.sh stop
+    user_msg: ""
+    logfile_path: ""
+    timeout_seconds: 60
+    icon_url: redis.io/favicon.ico
   resources:
     gpu:
       requested: 2
