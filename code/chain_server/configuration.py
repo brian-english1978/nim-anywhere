@@ -91,27 +91,20 @@ class MilvusConfig(BaseModel):
 class LLMModelConfig(BaseModel):
     """Configuration for connecting the an LLM chat model."""
 
-from openai import OpenAI
-
-client = OpenAI(
-  base_url = "https://integrate.api.nvidia.com/v1",
-  api_key = "Z3BlMjEwMmVoOGQxY25ib21zaTZiaHY1dHM6YzlkYWY1MGItZDg5Ni00NWU5LWFmYTAtZjdmOGYyMzEzYTI4"
-)
-
-completion = client.chat.completions.create(
-  model="nv-mistralai/mistral-nemo-12b-instruct",
-  messages=[{"role":"user","content":"Write a limerick about the wonders of GPU computing."}],
-  temperature=0.2,
-  top_p=0.7,
-  max_tokens=1024,
-  stream=True
-)
-
-for chunk in completion:
-  if chunk.choices[0].delta.content is not None:
-    print(chunk.choices[0].delta.content, end="")
-
-
+    name: Annotated[
+        str,
+        Field(
+            "meta/llama3-8b-instruct",
+            description="The name of the model to request.",
+        ),
+    ]
+    url: Annotated[
+        HttpUrl,
+        Field(
+            "https://integrate.api.nvidia.com/v1",
+            description="The URL to the model API.",
+        ),
+    ]
 
 
 class RerankingModelConfig(BaseModel):
