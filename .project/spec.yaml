@@ -227,14 +227,14 @@ execution:
     description: A path where NIM containers can store and share their cache.
     options: ""
   - type: host
-    target: /var/run/docker.sock/
-    description: Tao-Dockermount
-    options: ""
-  - type: host
     target: /nvidia-workbench/
     description: Project files and specs
     options: ""
   - type: host
     target: /home/workbench/
     description: The Narrow Path
+    options: ""
+  - type: host
+    target: /var/run/docker.sock/
+    description: ""
     options: ""
